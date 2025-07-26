@@ -138,9 +138,9 @@ export default function App() {
         </ProtectedRoute>
       },
       {
-        path:'/brands',element:<ProtectedRoute>
+        path:'/brands',element:
           <Brands/>
-        </ProtectedRoute>
+        
       },
       ]
     },
