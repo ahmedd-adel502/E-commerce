@@ -1,5 +1,5 @@
 import { faCircleQuestion, faEnvelope } from "@fortawesome/free-regular-svg-icons"
-import loginCart from "../../assets/images/loginCart.png"
+import loginCart from "../../assets/images/LoginCart.png"
 import { faClock, faEye, faEyeSlash, faLock, faStar, faTruckFast, faUserPlus, faUsers } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons"
