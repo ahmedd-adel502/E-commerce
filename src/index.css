@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+@theme{
+    --font-poppins:'Poppins', sans-serif;
+     --color-primary-50: #f0fdf4;
+    --color-primary-100: #dcfce7;
+    --color-primary-200: #bbf7d0;
+    --color-primary-300: #86efac;
+    --color-primary-400: #4ade80;
+    --color-primary-500: #22c55e;
+    --color-primary-600: #16a34a;
+    --color-primary-700: #15803d;
+    --color-primary-800: #14532d;
+    --color-primary-900: #134e28;
+    --color-primary-950: #052f21;
+    --animate-slide-in:slideIn 400ms ease-in-out;
+    @keyframes slideIn{
+        from{
+            transform:translateX(-100%)
+        }
+        to{
+            transform:translateX(0)
+        }
+    }
+}
+@layer components{
+    .form-control{
+        @apply w-full py-3 px-2 rounded-lg border-2 border-gray-300/95 outline-none focus:border-primary-400/95
+    }
+    .divider{
+        @apply  text-center h-[2px] flex justify-center items-center bg-gray-200/95 rounded-md
+    }
+    .btn{
+        @apply py-2 px-4 rounded-md bg-gray-500/95 text-white cursor-pointer hover:bg-gray-600/95
+    }
+}
+@layer base{
+    body{
+        @apply font-poppins
+    }
+    a,span{
+        @apply inline-block
+    }
+}
+@layer utilities{
+    .container{
+        @apply mx-auto
+    }
+}
+.swiper-button-next{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 5px !important;
+    background-color:rgba(238, 243, 238, 0.473)  !important;
+    right: 10px !important;
+}
+
+.swiper-button-prev{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 5px !important;
+    background-color:rgba(243, 243, 243, 0.425)  !important;
+    left: 10px !important;
+}
+
+.swiper-button-next:after{
+   font-size: 20px;
+   color: white !important;
+}
+.swiper-button-prev:after{
+   font-size: 20px;
+   color: white !important;
+}
+@media screen and (min-width:400px) and (max-width: 768px) {
+    .swiper-button-next, .swiper-button-prev {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 16px !important;
+    }
+    
+}
+@media screen and (min-width:768px) and (max-width: 992px) {
+    .swiper-button-next, .swiper-button-prev {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 18px !important;
+    }
+    
+}
+@media screen and (min-width:992px) {
+    .swiper-button-next, .swiper-button-prev {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 18px !important;
+    }
+    
+}
+.swiper-pagination-bullet-active{
+    width: 22px !important;
+    border-radius: 5px !important;
+    background-color: var(--color-primary-200) !important;
+}
+input::-ms-reveal {
+  display: none;
+}
+input::-ms-clear {
+  display: none;
+}
