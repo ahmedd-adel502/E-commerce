@@ -31,6 +31,7 @@ import BrandDetails from "./pages/BrandDetails/BrandDetails";
 import CategoryDetails from "./pages/Account/CategoryDetails/CategoryDetails";
 import SubCategoryDetails from "./pages/SubCategoryDetails/SubCategoryDetails";
 import AllOrders from "./pages/AllOrders/AllOrders";
+import ScrollToTopButton from "./components/ScrollToTop/ScrollToTop";
 
 export default function App() {
   const router=createBrowserRouter([
@@ -156,6 +157,7 @@ export default function App() {
                     <ProductsProvider>
                       <RouterProvider router={router} />
                       <ToastContainer closeOnClick pauseOnHover />
+                      <ScrollToTopButton/>
                     </ProductsProvider>
               </CategoriesProvider>
             </CartProvider>

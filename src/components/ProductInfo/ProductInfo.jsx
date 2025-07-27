@@ -78,7 +78,7 @@ export default function ProductInfo({productDetails}) {
                     <div className="flex items-center gap-x-2">
                         <div className="flex items-center border border-gray-400 rounded-md  gap-x-2 lg:overflow-hidden">
                                 <button className="cursor-pointer text-sm lg:text-lg py-2 px-2 rounded-l-md border-r border-gray-400 bg-gray-200 hover:bg-gray-300 " onClick={()=>{updateProductQuantity({id,count:count-1})}}><i><FontAwesomeIcon icon={faMinus} /></i></button>
-                                <span className="text-black  text-sm lg:text-lg mx-2">{token?isLoading?<><FontAwesomeIcon icon={faSpinner} spin /></>:<>{count}</>:0}</span>
+                                <span className="text-black  text-sm lg:text-lg mx-2">{token?isLoading?<><FontAwesomeIcon icon={faSpinner} spin /></>:<>{count?count:0}</>:0}</span>
                                 <button className="cursor-pointer text-sm lg:text-lg py-2 px-2 rounded-r-md border-l border-gray-400 bg-primary-600 hover:bg-primary-700 text-white" onClick={()=>{updateProductQuantity({id,count:count+1})}}><i><FontAwesomeIcon icon={faPlus} /></i></button>
                             </div>
                         <span className="text-gray-500 text-sm sm:text-[16px]">only {quantity} items left in stock</span>
