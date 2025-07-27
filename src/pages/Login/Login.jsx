@@ -71,12 +71,12 @@ export default function Login() {
   return <>
   <MetaData title="Login" description="Login to your account" keywords="Login, products, favorite, cart, buy, order" />
     <div className='bg-gray-100/95'>
-      <div className="container mx-auto py-32 px-5 grid grid-cols-2 gap-6">
-          <div className="left-side mt-15 flex flex-col justify-center items-center text-center space-y-5">
-            <img className="w-[90%] rounded-md shadow-lg inline-block" src={loginCart} alt="Fresh Cart" />
+      <div className="container mx-auto pb-10 lg:py-32 lg:pb-0 px-5 grid grid-cols-1 gap-6">
+          <div className="left-side mt-15 flex flex-col justify-center items-center text-center space-y-5 border border-gray-300/50 rounded-lg shadow-lg lg:border-0 lg:rounded-none lg:shadow-none">
+            <img className="w-full lg:w-[90%] lg:rounded-md lg:shadow-lg inline-block" src={loginCart} alt="Fresh Cart" />
             <h2 className="text-2xl font-bold">Fresh Groceries Delivered</h2>
             <p className="text-gray-600">Join thousands of happy customers who trust FreshCart for their <br />daily grocery needs</p>
-            <ul className="flex gap-6">
+            <ul className="flex gap-6 p-5 lg:p-0 *:border *:border-gray-300/50 *:rounded-lg *:p-2 lg:*:border-0 lg:*:p-0 lg:*:rounded-none">
                 <li className="flex gap-2 items-center">
                   <i className="text-primary-600 text-sm"><FontAwesomeIcon icon={faTruckFast} /></i>
                   <span>Free Delivery </span>

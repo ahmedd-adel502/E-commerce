@@ -70,8 +70,8 @@ export default function SignUp() {
 
   return <>
   <MetaData title="Sign Up" description="Sign Up to Fresh Cart" keywords="Sign Up, products, favorite, cart, buy, order,deals" />
-  <div className="bg-gray-200/90 py-20">
-    <div className="container mx-auto grid grid-cols-2 gap-10">
+  <div className="bg-gray-200/90 py-2 px-5 lg:py-20 lg:px-0">
+    <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div className="left-side py-30 space-y-8">
           <h1 className="text-5xl font-bold">Welcome to <span className="text-primary-600">Fresh Cart</span></h1>
           <p className="text-gray-500">Join thousands of happy customers who enjoy fresh groceries <br /> delivered right to their doorstep</p>

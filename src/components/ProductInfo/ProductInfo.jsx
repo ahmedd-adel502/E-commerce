@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRotateLeft, faMinus, faPlus, faShareNodes, faShoppingCart, faSpinner, faTruckFast, faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons"
@@ -10,17 +10,20 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { useContext } from "react"
 import { CartContext } from "../../Context/Cart.context"
 import { WishlistContext } from "../../Context/Wishlist.context"
+import { AuthContext } from "../../Context/Auth.context"
+import { toast, Zoom } from "react-toastify"
 export default function ProductInfo({productDetails}) {
 
     const {handleAddingProductToCart,isLoading,isError,error,cartInfo,updateProductQuantity,handleDeleteCartItem} = useContext(CartContext)
-    const {handleAddProductToWishlist,deleteItemFromWishlist,products : wishlistProducts}= useContext(WishlistContext)  
+    const {handleAddProductToWishlist,deleteItemFromWishlist,products : wishlistProducts}= useContext(WishlistContext)
+    const {token} = useContext(AuthContext)  
     
     if (!productDetails) return <><div className="flex justify-center items-center"><Loading /></div></>
     const {data} = cartInfo? cartInfo : {}
     const {products} = data ? data : {}
     const [product] = products? products.filter(product=>product.product.id === productDetails.id):[]
     const {count} = product ? product : {}
-    
+    const navigate= useNavigate();
     
     const {price,priceAfterDiscount,title,ratingsAverage,ratingsQuantity,images,quantity,description,id}= productDetails
     const inWishList = wishlistProducts?.find((product) => product?.id === id);
@@ -73,10 +76,10 @@ export default function ProductInfo({productDetails}) {
                 <div className="quantity flex items-center gap-x-2">
                     <span className="text-black text-sm lg:text-lg">Quantity:</span>
                     <div className="flex items-center gap-x-2">
-                        <div className="flex items-center border border-gray-400 rounded-md  gap-x-2 overflow-hidden">
-                                <button className="cursor-pointer text-lg py-2 px-2 border-r border-gray-400 bg-gray-200 hover:bg-gray-300 " onClick={()=>{updateProductQuantity({id,count:count-1})}}><i><FontAwesomeIcon icon={faMinus} /></i></button>
-                                <span className="text-black  text-lg mx-2">{isLoading?<><FontAwesomeIcon icon={faSpinner} spin /></>:<>{count}</>}</span>
-                                <button className="cursor-pointer text-lg py-2 px-2 border-l border-gray-400 bg-primary-600 hover:bg-primary-700 text-white" onClick={()=>{updateProductQuantity({id,count:count+1})}}><i><FontAwesomeIcon icon={faPlus} /></i></button>
+                        <div className="flex items-center border border-gray-400 rounded-md  gap-x-2 lg:overflow-hidden">
+                                <button className="cursor-pointer text-sm lg:text-lg py-2 px-2 rounded-l-md border-r border-gray-400 bg-gray-200 hover:bg-gray-300 " onClick={()=>{updateProductQuantity({id,count:count-1})}}><i><FontAwesomeIcon icon={faMinus} /></i></button>
+                                <span className="text-black  text-sm lg:text-lg mx-2">{token?isLoading?<><FontAwesomeIcon icon={faSpinner} spin /></>:<>{count}</>:0}</span>
+                                <button className="cursor-pointer text-sm lg:text-lg py-2 px-2 rounded-r-md border-l border-gray-400 bg-primary-600 hover:bg-primary-700 text-white" onClick={()=>{updateProductQuantity({id,count:count+1})}}><i><FontAwesomeIcon icon={faPlus} /></i></button>
                             </div>
                         <span className="text-gray-500 text-sm sm:text-[16px]">only {quantity} items left in stock</span>
                     </div>
@@ -91,7 +94,16 @@ export default function ProductInfo({productDetails}) {
                     Remove From Cart
                     </button>:<button className="flex items-center gap-x-2 justify-center bg-primary-600 text-white py-2 px-4 rounded-md hover:bg-primary-700"
                 onClick={()=>{
-                    handleAddingProductToCart({id})
+                    if(!token){
+                        toast.error("Please login first to add products to cart!",{autoClose:2000,position:`top-right`,transition:Zoom,theme:"colored"})
+                        setTimeout(() => {
+                            navigate("/login")
+                        },3000)
+                    }else{
+                    if(quantity>0){
+                        handleAddingProductToCart({id})
+                    }
+                    }
                 }}>
                     <i><FontAwesomeIcon icon={faShoppingCart} /></i>
                     Add to Cart
