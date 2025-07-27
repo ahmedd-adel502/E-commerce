@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import { useParams } from "react-router";
 import { apiClient } from "../../components/ApiClient/ApiClient";
 import ProductTabs from "../../components/ProductDetailing/ProductTabs";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
+import { CartContext } from "../../Context/Cart.context";
 
 export default function ProductDetails() {
 
   const [isLoading,setIsLoading]= useState(false);
     const [error,setError]= useState(null);
     const [products,setProducts]= useState(null);
+
 
     const {id}= useParams();
      async function getProductByid(id){

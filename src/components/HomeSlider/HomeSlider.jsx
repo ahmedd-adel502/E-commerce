@@ -1,7 +1,7 @@
 import { Swiper,SwiperSlide } from "swiper/react";
 import {Navigation,Pagination,Autoplay} from 'swiper/modules';
 import homeImg from "../../assets/images/home-slider-1.png"
-export default function HomeSlider() {
+export default function HomeSlider({goToDeals,goToFeatured}) {
   return <>
    <Swiper 
       slidesPerView={1}
@@ -22,8 +22,8 @@ export default function HomeSlider() {
                  <h3 className='font-bold text-white lg:text-3xl text-xl'>Fresh Products <br/>Delivered to Your Door</h3>
                 <span className='text-gray-200 lg:text-xl text-lg'>Get 20% off on your first order with code: FRESH20</span>
                 <div className='flex gap-4 items-center'>
-                  <button className='py-3 px-3 rounded-md cursor-pointer bg-white text-primary-400 border-2 border-white hover:bg-gray-100/90'>Shop Now</button>
-                  <button className='py-3 px-3 rounded-md cursor-pointer bg-transparent text-white border-2 border-white hover:bg-white hover:text-primary-400'>View Deals</button>
+                  <button onClick={goToFeatured} className='py-3 px-3 rounded-md cursor-pointer bg-white text-primary-400 border-2 border-white hover:bg-gray-100/90'>Shop Now</button>
+                  <button onClick={goToDeals} className='py-3 px-3 rounded-md cursor-pointer bg-transparent text-white border-2 border-white hover:bg-white hover:text-primary-400'>View Deals</button>
                 </div>
               </div>
             </div>

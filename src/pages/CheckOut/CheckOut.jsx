@@ -128,7 +128,7 @@ export default function CheckOut() {
                     <div className="space-y-4">
                        <div className={` ${formik.values.paymentMethod === "cod" && "bg-primary-50"} border border-gray-300/50 rounded-md px-2 py-5 space-y-5`}>
                             <label htmlFor="cod" className="flex items-center justify-between gap-4">
-                            <div className="w-full flex flex-col items-center justify-between gap-4">
+                            <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-4">
                               <div className="flex items-center gap-2">
                                 <input type="radio" id="cod" name="paymentMethod" value={"cod"} onChange={formik.handleChange} onBlur={formik.handleBlur} onClick={(e)=>{handlePaymentMethodChange(e)}} />
                                   <i className="text-primary-600"><FontAwesomeIcon icon={faMoneyBill1Wave} /></i>
@@ -151,7 +151,7 @@ export default function CheckOut() {
 
                       <div className={`${formik.values.paymentMethod === "online" && "bg-primary-50"} border border-gray-300/50 rounded-md px-2 py-5 space-y-5`}>
                                <label htmlFor="online"  className="flex items-center justify-between gap-4">
-                        <div className="w-full flex flex-col items-center justify-between gap-4">
+                        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-4">
                           <div className="flex items-center gap-2">
                             <input type="radio" id="online" name="paymentMethod" value={"online"} onChange={formik.handleChange} onBlur={formik.handleBlur} checked={formik.values.paymentMethod === "online"} onClick={(e)=>{handlePaymentMethodChange(e)}}/>
                                 <i className="text-primary-600"><FontAwesomeIcon icon={faCreditCard} /></i>

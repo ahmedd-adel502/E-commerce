@@ -19,6 +19,7 @@ export default function Navbar() {
   function handleLogOut(){
     setToken(null)
     localStorage.removeItem("token")
+    localStorage.removeItem("user")
     sessionStorage.removeItem("token")
     toast.success("You have successfully logged out",{autoClose:1500,position:`top-center`,transition:Zoom,theme:"colored"});
     setTimeout(() => {
@@ -109,7 +110,7 @@ export default function Navbar() {
                     <NavLink className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"wishlist"}>
                        <div className='relative'>
                           <i><FontAwesomeIcon className='text-lg' icon={faHeart} /></i>
-                          <span className=' bg-primary-600 text-white rounded-full size-5 flex justify-center items-center absolute top-1 -right-2 -translate-y-1/2 '>{wishlistLoading? <FontAwesomeIcon icon={faSpinner} spin /> : itemsCount}</span>
+                          <span className=' bg-primary-600 text-white rounded-full size-5 flex justify-center items-center absolute top-1 -right-2 -translate-y-1/2 '>{!token? 0 : wishlistLoading? <FontAwesomeIcon icon={faSpinner} spin /> : itemsCount}</span>
                         </div>
                         <span className='text-sm'>Wishlist</span>
                     </NavLink>
@@ -171,7 +172,7 @@ export default function Navbar() {
           <NavLink className={({isActive})=>`flex flex-col items-center ${isActive? "text-primary-600":""}` } to={"wishlist"}>
               <div className='relative'>
                     <i><FontAwesomeIcon className='text-xl' icon={faHeart} /></i>
-                    <span className=' bg-primary-600 text-white rounded-full size-5 flex justify-center items-center absolute top-1 -right-2 -translate-y-1/2 '>{wishlistLoading? <FontAwesomeIcon icon={faSpinner} spin /> : itemsCount}</span>
+                    <span className=' bg-primary-600 text-white rounded-full size-5 flex justify-center items-center absolute top-1 -right-2 -translate-y-1/2 '>{!token? 0 : wishlistLoading? <FontAwesomeIcon icon={faSpinner} spin /> : itemsCount}</span>
                   </div>
               <span className='text-sm'>Wishlist</span>
           </NavLink>

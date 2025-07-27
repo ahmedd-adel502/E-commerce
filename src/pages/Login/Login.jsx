@@ -17,14 +17,13 @@ export default function Login() {
   const {setToken} = useContext(AuthContext)
   const location = useLocation()
   const from = location.state?.from || "/"
-
   const passwordRegex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-
   async function handleSubmit(values){
     try {
         const response = await sendDataToLogin(values);
         if(response.message==="success"){
           toast.success(`You have successfully signed in ,Welcome Back ! ${response.user.name}`,{autoClose:1500,position:`top-center`,transition:Zoom,theme:"colored"});
+          localStorage.setItem("user",JSON.stringify(response.user))
           setTimeout(()=>{
             navigate(from)
               setTimeout(() => {

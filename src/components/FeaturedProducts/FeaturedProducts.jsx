@@ -15,7 +15,7 @@ export default function FeaturedProducts() {
     }
 
   return <>
-     <div className="container py-20 px-5 sm:px-4 lg:px-3">
+     <div id="featured" className="container py-20 px-5 sm:px-4 lg:px-3">
         <div className="flex justify-between items-center">
             <div className="flex">
                 <h2 className="text-2xl font-semibold">Featured Products</h2>

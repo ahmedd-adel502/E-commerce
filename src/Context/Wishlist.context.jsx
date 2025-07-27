@@ -55,7 +55,7 @@ export default function WishlistProvider({children}){
             if(response.success){
                 setProducts(response.data.data);
                 toast.dismiss(toastId);
-                toast.success(response.data.message,{autoClose:2000,position:`top-right`,transition:Zoom,theme:"colored"});
+                toast.success("Product Removed successfully from your wishlist",{autoClose:2000,position:`top-right`,transition:Zoom,theme:"dark"});
                 await fetchWishlistItems(); 
             }
             

@@ -41,7 +41,7 @@ export default function HomeDeals() {
 
     
   return <>
-  <div className="container py-20 px-5 sm:px-4 lg:px-3">
+  <div id="deals" className="container py-20 px-5 sm:px-4 lg:px-3">
     <div className="flex justify-between items-center">
         <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold">Deals of the day</h2>
