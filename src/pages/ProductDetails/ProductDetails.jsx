@@ -12,8 +12,6 @@ export default function ProductDetails() {
   const [isLoading,setIsLoading]= useState(false);
     const [error,setError]= useState(null);
     const [products,setProducts]= useState(null);
-
-
     const {id}= useParams();
      async function getProductByid(id){
         try {
@@ -37,7 +35,7 @@ export default function ProductDetails() {
 
 
   return <>
-  <MetaData title={productDetails?.name} description="Product Details of your favorite products" keywords="Product Details, products, favorite, cart, buy, order" />
+  <MetaData title={products?.title} description="Product Details of your favorite products" keywords="Product Details, products, favorite, cart, buy, order" />
     <div className="bg-gray-100/50">
        <div className="container py-15">
          <ProductInfo productDetails={products} />

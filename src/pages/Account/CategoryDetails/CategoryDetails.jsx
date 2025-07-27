@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../../Services/ProductService";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import Loading from "../../../components/Loading/Loading";
+import MetaData from "../../../components/MetaData/MetaData";
 
 export default function CategoryDetails() {
 
@@ -57,6 +58,7 @@ export default function CategoryDetails() {
     }
 
   return <>
+  <MetaData title={`Products for ${category?.name}`} description={`Products for ${category?.name}`} keywords={`Products for ${category?.name}`} />
     <div className="py-15">
           <div className="container">
             {products?.filter((product)=>product.category.name===category?.name).length > 0 ? <><div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
