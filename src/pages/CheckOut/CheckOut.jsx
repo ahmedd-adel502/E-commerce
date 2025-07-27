@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { CartContext } from "../../Context/Cart.context";
 import { apiClient } from "../../components/ApiClient/ApiClient";
 import { toast, Zoom } from "react-toastify";
+import MetaData from "../../components/MetaData/MetaData";
 export default function CheckOut() {
 
   const {cartInfo,setCartInfo} = useContext(CartContext)
@@ -115,6 +116,7 @@ export default function CheckOut() {
 
   
   return <>
+  <MetaData title="Checkout" description="Checkout" keywords="Checkout" />
       <section className="bg-gray-100 py-10">
         <div className="container">
           <div className="w-[90%] lg:w-[80%] mx-auto">

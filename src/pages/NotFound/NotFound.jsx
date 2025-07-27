@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router"
 import errorImg from "../../../public/undraw_feeling-blue_8si6.svg"
 import NewsLetter from "../../components/NewsLetter/NewsLetter"
+import MetaData from "../../components/MetaData/MetaData"
 export default function NotFound() {
   return <>
+
+  <MetaData title="Not Found" description=" Page you are looking for is Not Found" keywords="Not Found, products, favorite, cart, buy, order" />
     <div className="flex flex-col space-y-8 justify-center items-center w-full bg-gray-200/50">
         <div className="w-2/5 mt-5">
           <img src={errorImg} alt="Page Not Found" />

@@ -8,6 +8,7 @@ import { Link } from "react-router";
 import NewsLetter from "../../components/NewsLetter/NewsLetter";
 import { CategoriesContext } from "../../Context/Categories.context";
 import { faApple } from "@fortawesome/free-brands-svg-icons";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function Categories() {
   const {getSubCategories,setSubCategories,subCategories} = useContext(CategoriesContext)
@@ -55,6 +56,7 @@ export default function Categories() {
   }, []);
 
   return <>
+  <MetaData title="Categories" description="Categories of your favorite products" keywords="Categories, products, favorite, cart, buy, order" />
   {/* Categories Header */}
     <div>
       <div className="container flex flex-col text-center lg:text-left gap-3 lg:gap-0 lg:flex-row  justify-between items-center py-10">

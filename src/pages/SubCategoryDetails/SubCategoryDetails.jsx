@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { apiClient } from "../../components/ApiClient/ApiClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faApple } from "@fortawesome/free-brands-svg-icons";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function SubCategoryDetails() {
 
@@ -28,6 +29,7 @@ export default function SubCategoryDetails() {
 
 
   return <>
+  <MetaData title={subCategory?.name} description={subCategory?.description} keywords={subCategory?.name} />
     <div className="bg-white py-15">
           <div className="container">
             <div className={` w-fit mx-auto bg-gray-200/50 p-8 hover:shadow-xl rounded-lg flex flex-col items-center gap-y-2 broder border-2 border-gray-200/10 space-y-2`}>

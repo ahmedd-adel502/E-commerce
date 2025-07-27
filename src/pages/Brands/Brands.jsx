@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router";
 import { BrandsContext } from "../../Context/Brands.context";
 import brandImg from "../../assets/images/BrandsPage.png";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function Brands() {
 
@@ -20,6 +21,7 @@ export default function Brands() {
   
 
   return <>
+  <MetaData title="Brands" description="Brands of your favorite products" keywords="Brands, products, favorite, cart, buy, order" />
     <div className="space-y-3 text-center py-10">
       <h1 className="font-bold text-3xl">Our Partner Brands</h1>
       <p className="text-gray-500 text-sm lg:text-lg">Discover Quality products from our trusted brand partners. We've partnered with leading <br /> brands to bring you the best selection of fresh and organic products.</p>

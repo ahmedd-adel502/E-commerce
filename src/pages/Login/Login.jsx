@@ -10,6 +10,7 @@ import * as Yup from "yup"
 import { sendDataToLogin } from "../../Services/Auth"
 import { toast, Zoom } from "react-toastify"
 import { AuthContext } from "../../Context/Auth.context"
+import MetaData from "../../components/MetaData/MetaData"
 export default function Login() {
   const navigate = useNavigate()
   const[showpassword,setshowpassword]=useState(false)
@@ -68,6 +69,7 @@ export default function Login() {
 
 
   return <>
+  <MetaData title="Login" description="Login to your account" keywords="Login, products, favorite, cart, buy, order" />
     <div className='bg-gray-100/95'>
       <div className="container mx-auto py-32 px-5 grid grid-cols-2 gap-6">
           <div className="left-side mt-15 flex flex-col justify-center items-center text-center space-y-5">

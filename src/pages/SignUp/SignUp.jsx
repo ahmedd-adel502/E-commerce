@@ -9,6 +9,7 @@ import { sendDataToSignUp } from "../../Services/Auth";
 import { toast,Zoom} from "react-toastify";
 import { useState } from "react";
 import { checkPasswordStrength } from "../../utils/password-utils";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function SignUp() {
 
@@ -68,6 +69,7 @@ export default function SignUp() {
   
 
   return <>
+  <MetaData title="Sign Up" description="Sign Up to Fresh Cart" keywords="Sign Up, products, favorite, cart, buy, order,deals" />
   <div className="bg-gray-200/90 py-20">
     <div className="container mx-auto grid grid-cols-2 gap-10">
         <div className="left-side py-30 space-y-8">

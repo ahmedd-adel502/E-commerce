@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../../Context/Auth.context";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function Orders() {
 
@@ -21,6 +22,7 @@ export default function Orders() {
     },500)
   }
   return <>
+  <MetaData title="Orders" description="Orders of your favorite products" keywords="Orders, products, favorite, cart, buy, order" />
   <div className="py-10 bg-gray-100">
     <div className="container">
         <div className="grid grid-cols-12 gap-10 px-5 lg:px-0">

@@ -5,6 +5,7 @@ import HomeCategories from '../../components/HomeCategories/HomeCategories';
 import HomeDeals from '../../components/HomeDeals/HomeDeals';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { useRef } from 'react';
+import MetaData from '../../components/MetaData/MetaData';
 
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
       featuredRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
   return <>
-    <title>Home Page</title>
+    <MetaData title="Home" description="Fresh Cart Home page" keywords="Home, products, favorite, cart, buy, order,deals" />
     <HomeSlider goToDeals={scrollToDeals} goToFeatured={scrollToFeatured}/>
     <HomeFeatures/>
     <HomeCategories/>

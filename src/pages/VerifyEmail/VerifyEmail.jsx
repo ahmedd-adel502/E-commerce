@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { verifySentCode } from "../../Services/Auth";
 import { useRef } from "react";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function VerifyEmail() {
 
@@ -58,6 +59,7 @@ export default function VerifyEmail() {
 
 
   return <>
+  <MetaData title="Verify Email" description="if you forgot your password you can return your account from here" keywords="Verify Email, products, favorite, cart, buy, order" />
     <div className="py-15">
       <div className="container py-4">
         <div className="w-[90%] sm:w-[60%] lg:w-[40%] xl:w-[30%] mx-auto border border-gray-200/50 rounded-lg p-6 space-y-6">

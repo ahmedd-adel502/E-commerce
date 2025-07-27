@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import * as Yup from "yup";
 import { resetPassword } from "../../Services/Auth";
 import { useState } from "react";
+import MetaData from "../../components/MetaData/MetaData";
 export default function ResetPassword() {
 
     const emailRegex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -40,6 +41,8 @@ export default function ResetPassword() {
 
 
   return <>
+
+  <MetaData title="Reset Password" description="if you forgot your password you can return your account from here" keywords="Reset Password, products, favorite, cart, buy, order" />
   <div className="bg-gray-100 py-10">
     <div className="container">
         <div className="bg-white w-[90%] sm:w-[60%] lg:w-[40%] xl:w-[30%] mx-auto border border-gray-300/50 shadow-lg rounded-md p-6 space-y-5">

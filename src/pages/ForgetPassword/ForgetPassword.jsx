@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import { Link, useNavigate } from 'react-router'
 import { sendEmailTocheck } from '../../Services/Auth'
 import * as Yup from "yup" 
+import MetaData from '../../components/MetaData/MetaData'
 export default function ForgetPassword() {
 
   const emailRegex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -33,6 +34,7 @@ export default function ForgetPassword() {
 
 
   return <>
+  <MetaData title="Forgot Password" description="if you forgot your password you can return your account from here" keywords="Forget Password, products, favorite, cart, buy, order" />
     <div className='bg-gray-100 py-15'>
       <div className="container flex items-center justify-center">
           <div className='flex flex-col gap-4 w-[90%] lg:w-[35%]'>

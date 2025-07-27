@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { verifySentCode } from "../../Services/Auth";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function VerifyResetCode() {
 
@@ -61,6 +62,7 @@ export default function VerifyResetCode() {
 
 
   return <>
+  <MetaData title="Verify Reset Code" description="if you forgot your password you can return your account from here" keywords="Verify Reset Code, products, favorite, cart, buy, order" />
     <div className="bg-gray-100 py-15">
       <div className="container py-4">
         <div className="w-[90%] sm:w-[60%] lg:w-[40%] xl:w-[30%] mx-auto bg-white shadow-lg border border-gray-200/50 rounded-lg p-6 space-y-6">

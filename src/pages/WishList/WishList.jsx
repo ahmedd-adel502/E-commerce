@@ -6,6 +6,7 @@ import { faFacebookF, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { use, useContext, useEffect } from "react";
 import { WishlistContext } from "../../Context/Wishlist.context";
 import { CartContext } from "../../Context/Cart.context";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function WishList() {
     const {products,isLoading,itemsCount} = useContext(WishlistContext)
@@ -31,6 +32,7 @@ export default function WishList() {
 
 
   return <>
+  <MetaData title="Wishlist" description="Wishlist of your favorite products" keywords="Wishlist, products, favorite, cart, buy, order" />
     <div className="bg-gray-200/50 py-10">
       <div className="container flex flex-col lg:flex-row px-5 lg:px-0 gap-10">
         <div className="col-span-8 h-fit bg-white rounded-md py-5 px-5 space-y-5">

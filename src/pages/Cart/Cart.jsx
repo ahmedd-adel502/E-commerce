@@ -5,6 +5,7 @@ import { useContext } from "react"
 import { CartContext } from "../../Context/Cart.context"
 import Loading from "../../components/Loading/Loading"
 import { Link } from "react-router"
+import MetaData from "../../components/MetaData/MetaData"
 export default function Cart() {
 
     const {cartInfo,isLoading,isError,error} = useContext(CartContext);    
@@ -15,6 +16,7 @@ export default function Cart() {
     
 
   return <>
+  <MetaData title="Cart" description="Cart of your favorite products" keywords="Cart, products, favorite, cart, buy, order" />
     <div className="bg-gray-100/50 py-10">
       <div className="container">
         <div className="flex flex-col lg:flex-row px-10 lg:px-0 justify-center gap-10">

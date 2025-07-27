@@ -5,6 +5,7 @@ import { apiClient } from "../../components/ApiClient/ApiClient";
 import ProductTabs from "../../components/ProductDetailing/ProductTabs";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
 import { CartContext } from "../../Context/Cart.context";
+import MetaData from "../../components/MetaData/MetaData";
 
 export default function ProductDetails() {
 
@@ -36,6 +37,7 @@ export default function ProductDetails() {
 
 
   return <>
+  <MetaData title={productDetails?.name} description="Product Details of your favorite products" keywords="Product Details, products, favorite, cart, buy, order" />
     <div className="bg-gray-100/50">
        <div className="container py-15">
          <ProductInfo productDetails={products} />
