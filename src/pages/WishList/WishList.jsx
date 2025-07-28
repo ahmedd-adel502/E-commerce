@@ -1,21 +1,53 @@
 import { faChevronLeft, faChevronRight, faShoppingCart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import WishListItem from "../../components/WishListItem/WishListItem";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { faFacebookF, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { use, useContext, useEffect } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import { WishlistContext } from "../../Context/Wishlist.context";
 import { CartContext } from "../../Context/Cart.context";
 import MetaData from "../../components/MetaData/MetaData";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 export default function WishList() {
-    const {products,isLoading,itemsCount} = useContext(WishlistContext)
+    const {products,isLoading,itemsCount,deleteItemFromWishlist,fetchWishlistItems,setProducts,setIsLoading} = useContext(WishlistContext)
     const {handleAddingProductToCart,handleDeleteCartItem,handleFetchingCartInfo} = useContext(CartContext)
     const {cartInfo} = useContext(CartContext)  
     const {data} = cartInfo? cartInfo : {}
     const {products: cartProducts} = data? data : {}
     const {product}=cartProducts? cartProducts:[]
     const {id} = product? product : {}
+
+    const [queryString, setQueryString] = useSearchParams({ page: 1 });
+    const page= queryString.get("page");
+    const [scrollYBefore, setScrollYBefore] = useState(0)
+      async function deleteAllWishlistItems() {
+
+
+         const result = await Swal.fire({
+                    title: "Are you sure?",
+                    text: "You Want to Delete this item!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                    })
+                    if(!result.isConfirmed){
+                        return;
+                    }else{
+                        if (products && products.length > 0) {
+                          await Promise.all(
+                            products.map((product) => deleteItemFromWishlist({ id: product._id }))
+                          );
+                          await fetchWishlistItems();
+                          toast.success("All wishlist items have been deleted.");
+                        } else {
+                          toast.info("No items to delete in your wishlist.");
+                        }
+                    } 
+    }
     
     
    function areAllProductsInCart(products, cartProducts) {
@@ -27,7 +59,9 @@ export default function WishList() {
 }
 
 
-
+useEffect(() => {
+  window.scrollTo({ top: scrollYBefore, behavior: "auto" });
+}, [page]);
 
 
 
@@ -35,13 +69,13 @@ export default function WishList() {
   <MetaData title="Wishlist" description="Wishlist of your favorite products" keywords="Wishlist, products, favorite, cart, buy, order" />
     <div className="bg-gray-200/50 py-10">
       <div className="container flex flex-col lg:flex-row px-5 lg:px-0 gap-10">
-        <div className="col-span-8 h-fit bg-white rounded-md py-5 px-5 space-y-5">
+        <div className="w-full h-fit bg-white rounded-md py-5 px-5 space-y-5">
           <div className="space-y-4 text-center lg:text-left lg:space-y-0">
             <h2 className="text-2xl font-bold">My Wishlist</h2>
             <div className="flex justify-between items-center flex-col gap-2 lg:gap-0 lg:flex-row">
               <span className="text-gray-600">{itemsCount} items in your wishlist</span>
-              <div className="flex items-center gap-6 lg:gap-2">
-                  <button className="text-gray-700 hover:text-red-500 transition-colors duration-200 flex items-center gap-1 cursor-pointer">
+              {products.length>0 ? <div className="flex items-center gap-6 lg:gap-2">
+                  <button className="text-gray-700 hover:text-red-500 transition-colors duration-200 flex items-center gap-1 cursor-pointer" onClick={deleteAllWishlistItems}>
                       <i><FontAwesomeIcon icon={faTrash} /></i><span>Clear All</span>
                   </button>
                   {areAllProductsInCart(products, cartProducts)?<button className="btn bg-red-600 hover:bg-red-700 flex items-center gap-1"  onClick={async () => {
@@ -61,19 +95,32 @@ export default function WishList() {
                     }}>
                     <i><FontAwesomeIcon icon={faShoppingCart} /></i><span>Add All to Cart</span>
                   </button> }
-              </div>
+              </div>:""}
             </div>
           </div>
           <div className="divider bg-gray-200/50"></div>
-          <div className="px-4 ">
-              {products? products.map(product=><WishListItem key={product?.id} productInfo={product} />):""}
+          <div className="px-4">
+              {products?.length>0 ? products? products.map(product=><WishListItem key={product?.id} productInfo={product} />):"":<div className="text-center space-y-3">
+              <span className="text-gray-600"><i><FontAwesomeIcon className="text-black" icon={faShoppingCart} /></i> Your Wishlist is empty!</span>
+              <div className="text-gray-600">You can start shopping now from <Link className="text-primary-600" to={"/"}>here</Link></div>
+              </div>}
           </div>
           <div className="divider bg-gray-200/50"></div>
           <div className="flex justify-center items-center gap-2">
-              <button className="btn bg-transparent text-black border border-gray-400/50 focus:bg-primary-600 focus:text-white transition-all duration-200"><i><FontAwesomeIcon icon={faChevronLeft}/></i></button>
-              <button className="btn bg-transparent text-black border border-gray-400/50 focus:bg-primary-600 focus:text-white transition-all duration-200">1</button>
-              <button className="btn bg-transparent text-black border border-gray-400/50 focus:bg-primary-600 focus:text-white transition-all duration-200">2</button>
-              <button className="btn bg-transparent text-black border border-gray-400/50 focus:bg-primary-600 focus:text-white transition-all duration-200"><i><FontAwesomeIcon icon={faChevronRight}/></i></button>
+              <button className="btn bg-transparent text-black border border-gray-400/50 hover:bg-primary-600 hover:text-white transition-all duration-200" onClick={()=>{
+                setScrollYBefore(window.scrollY);
+                setQueryString({ page: page === "1" ? "1" : "1" })
+              }}><i><FontAwesomeIcon icon={faChevronLeft}/></i></button>
+              <button onClick={()=>{setScrollYBefore(window.scrollY);
+                setQueryString({ page: "1" });}}  className={`btn text-black border border-gray-400/50 ${page === "1" ? "bg-primary-600 text-white" : "text-black bg-transparent"}  transition-all duration-200`}>1</button>
+              <button onClick={()=>{
+                setScrollYBefore(window.scrollY);
+                setQueryString({ page: "2" });
+              }} className={`btn  text-black border border-gray-400/50 ${page === "2" ? "bg-primary-600 text-white" : "text-black bg-transparent"}  transition-all duration-200`}>2</button>
+              <button className="btn bg-transparent text-black border border-gray-400/50 hover:bg-primary-600 hover:text-white transition-all duration-200" onClick={()=>{
+                setScrollYBefore(window.scrollY);
+                setQueryString({ page: page === "2" ? "2" : "2" })
+              }}><i><FontAwesomeIcon icon={faChevronRight}/></i></button>
           </div>
         </div>
 
