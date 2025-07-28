@@ -33,8 +33,8 @@ export default function ProductInfo({productDetails}) {
     }
   return <>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <div className="flex items-center justify-center w-[70%] mx-auto">
-            <div className="images shadow-xl ">
+        <div className="flex items-center lg:items-start justify-center w-[80%] lg:w-[70%] mx-auto">
+            <div className="images shadow-xl w-full lg:w-[120%]" onTouchMove={(e) => e.preventDefault()}>
                 <ReactImageGallery showPlayButton={false} showNav={false} showFullscreenButton={false} items={images.map(image=>({original:image,thumbnail:image}))} />
              </div>
         </div>
