@@ -115,7 +115,7 @@ export default function Categories() {
               {subCategories?.slice(0,6).map((subCategory) => (
                   <Link to={`/subcategories/${subCategory._id}`} key={subCategory._id} className={`cursor-pointer category-cart bg-gray-200/50 py-5 px-5 hover:shadow-xl rounded-lg flex flex-col items-center gap-y-2 broder border-2 border-gray-200/10 space-y-2`}>
                   <span className='flex justify-center items-center'><i className="text-primary-600 bg-primary-200 flex items-center justify-center rounded-full size-12 text-xl"><FontAwesomeIcon icon={faApple} /></i> </span>
-                  <h2 className='font-semibold text-center text-nowrap'>{subCategory.name}</h2>
+                  <h2 className='font-semibold text-center lg:text-nowrap'>{subCategory.name}</h2>
                  </Link>
               ))}
           </div>
@@ -130,18 +130,18 @@ export default function Categories() {
                 <span className="text-primary-600 block">Featured Category</span>
                 <h2 className="text-3xl font-bold">Organic fruits and vegetables</h2>
                 <p className="text-gray-500">Discover our wide range of certified organic products, sourced from local farms and delivered fresh to your doorstep.</p>
-                <ul>
+                <ul className="*:w-full *:flex *:gap-2">
                   <li>
                     <i className="text-primary-600 mx-2"><FontAwesomeIcon icon={faCheck} /></i>
-                    <span>100% Certified Organic</span>
+                    <span className="text-nowrap">100% Certified Organic</span>
                   </li>
                   <li>
                     <i className="text-primary-600 mx-2"><FontAwesomeIcon icon={faCheck} /></i>
-                    <span>Locally sourced when Available</span>
+                    <span className="text-nowrap">Locally sourced when Available</span>
                   </li>
                   <li>
                     <i className="text-primary-600 mx-2"><FontAwesomeIcon icon={faCheck} /></i>
-                    <span>No Pesticides or Harmful Chemicals</span>
+                    <span >No Pesticides or Harmful Chemicals</span>
                   </li>
                 </ul>
                 <button className="btn bg-primary-600 w-fit hover:bg-primary-700">Explore Category</button>

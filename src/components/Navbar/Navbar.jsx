@@ -107,7 +107,7 @@ export default function Navbar() {
                 <h2 className='font-semibold text-lg'>Main Menu</h2>
                 <menu className=' space-y-3 px-4'>
                   <li>
-                    <NavLink className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"wishlist"}>
+                    <NavLink onClick={toggleCanvas} className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"wishlist"}>
                        <div className='relative'>
                           <i><FontAwesomeIcon className='text-lg' icon={faHeart} /></i>
                           <span className=' bg-primary-600 text-white rounded-full size-5 flex justify-center items-center absolute top-1 -right-2 -translate-y-1/2 '>{!token? 0 : wishlistLoading? <FontAwesomeIcon icon={faSpinner} spin /> : itemsCount}</span>
@@ -116,7 +116,7 @@ export default function Navbar() {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"cart"}>
+                    <NavLink onClick={toggleCanvas} className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"cart"}>
                         <div className='relative'>
                           <i><FontAwesomeIcon className='text-lg' icon={faCartShopping} /></i>
                           <span className=' bg-primary-600 text-white rounded-full size-5 flex justify-center items-center absolute top-1 -right-2 -translate-y-1/2 '>{!token? 0 : isLoading? <FontAwesomeIcon icon={faSpinner} spin /> :cartInfo?.numOfCartItems}</span>
@@ -125,7 +125,7 @@ export default function Navbar() {
                     </NavLink>
                   </li>
                    <li>
-                      <NavLink className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"account"}>
+                      <NavLink onClick={toggleCanvas} className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"account"}>
                           <i><FontAwesomeIcon className='text-lg' icon={faUser} /></i>
                           <span className='text-sm'>Account</span>
                       </NavLink>
@@ -137,13 +137,13 @@ export default function Navbar() {
                   <menu className='space-y-3 px-4'>
                        {!token?<>
                        <li>
-                          <NavLink className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"/signup"}>
+                          <NavLink onClick={toggleCanvas} className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600 bg-primary-100":""}` } to={"/signup"}>
                               <i><FontAwesomeIcon className='text-lg' icon={faUserPlus} /></i>
                               <span className='text-sm'>Sign Up</span>
                           </NavLink>
                         </li>
                        <li>
-                          <NavLink className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600":""}` } to={"/login"}>
+                          <NavLink onClick={toggleCanvas} className={({isActive})=>`flex gap-4 items-center bg-gray-100 hover:bg-gray-200 rounded-lg py-2 px-3 ${isActive? "text-primary-600":""}` } to={"/login"}>
                               <i><FontAwesomeIcon className='text-lg' icon={faIdCard} /></i>
                               <span className='text-sm'>Login</span>
                           </NavLink>
