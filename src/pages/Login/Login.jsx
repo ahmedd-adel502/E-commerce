@@ -71,7 +71,7 @@ export default function Login() {
   return <>
   <MetaData title="Login" description="Login to your account" keywords="Login, products, favorite, cart, buy, order" />
     <div className='bg-gray-100/95'>
-      <div className="container mx-auto pb-10 lg:py-32 lg:pb-0 px-5 grid grid-cols-1 gap-6">
+      <div className="container mx-auto pb-10 lg:py-32 lg:pb-8 px-5 grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="left-side mt-15 flex flex-col justify-center items-center text-center space-y-5 border border-gray-300/50 rounded-lg shadow-lg lg:border-0 lg:rounded-none lg:shadow-none">
             <img className="w-full lg:w-[90%] lg:rounded-md lg:shadow-lg inline-block" src={loginCart} alt="Fresh Cart" />
             <h2 className="text-2xl font-bold">Fresh Groceries Delivered</h2>
